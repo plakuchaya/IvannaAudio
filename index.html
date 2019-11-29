@@ -5,30 +5,44 @@
 </head>
 <body style="background-color: lightgrey">
 
-<audio controls id="changeAudio" autoplay style ="margin-left: 550px; margin-top:60px;">
+<audio controls id="changeAudio" autoplay style ="margin-left: 550px; margin-top:40px;">
 
-<source src="audio/Sonny.mp3" type="audio/mp3">
+<source src="audio/Sonny.mp3" type="">
 
 </audio>
 
-<img class="slides" src="Images/0.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
-<img class="slides" src="Images/1.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
-<img class="slides" src="Images/2.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
+<img id="images" src="Images/2.jpg" style="width:50%; margin-left: 350px; margin-top: 30px;">
 
 <div>
-<button style="margin-left:550px; margin-top: 100px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class = "button" onclick="changeAudio()">Change Song
+<button style="margin-left:550px; margin-top: 30px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class="button" onclick="playsong()"> Play </button>
+<button style="margin-left:550px; margin-top: 10px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class="button" onclick="pausesong()"> Pause </button>
+<button style="margin-left:550px; margin-top: 10px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class="button" onclick="resetsong()"> Reset </button>
+<button style="margin-left:550px; margin-top: 10px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class = "button" onclick="changeAudio()">Change Song
 </button>
 </div>
 
 <script type="text/javascript">
 	
 var a = document.getElementById("changeAudio");
-var b = document.getElementById ("changeImage");
+var c = document.getElementById("images");
 var checkThis;
-var prevTime = 0;
-var i = 0;
 
 var state = false;
+
+function playsong() {
+a.play();
+checkThis = setInterval(checkTime, 1000);
+}
+
+function pausesong() {
+a.pause();
+}
+
+function resetsong() {
+a.pause();
+a.currentTime = 0;
+c.src = ""
+}
 
 function changeAudio() {
 
@@ -42,25 +56,73 @@ a.src = "audio/Sonny.mp3";
 else if (state == true) {
 a.src = "audio/Cher.mp3";
 }
+}
 
+function checkTime() {
+console.log(a.currentTime);
+	
+
+if (a.currentTime >= 15) {
+	c.src = "Images/0.jpg";
 }
 
 
-var index = 0;
-change();
-function change() {
-var x = document.getElementsByClassName("slides");
-for(var i = 0; i < x.length; i++) { 
-x[i].style.display = "none"; 
-}
-index++;
-if(index > x.length) { 
-index = 1; 
-}
-x[index - 1].style.display = "block";
-setTimeout(change, 3500);
+if (a.currentTime >= 30) {
+c.src = "Images/1.jpg";
 }
 
+if (a.currentTime >= 45) {
+c.src = "Images/2.jpg";
+}
+
+if (a.currentTime >= 60) {
+c.src = "Images/0.jpg";
+}
+
+if (a.currentTime >= 75) {
+c.src = "Images/1.jpg";
+}
+
+if (a.currentTime >= 90) {
+c.src = "Images/2.jpg";
+}
+
+if (a.currentTime >= 105) {
+c.src = "Images/0.jpg";
+}
+
+if (a.currentTime >= 120) {
+c.src = "Images/1.jpg";
+}
+
+if (a.currentTime >= 135) {
+c.src = "Images/2.jpg";
+}
+
+if (a.currentTime >= 150) {
+c.src = "Images/0.jpg";
+}
+
+if (a.currentTime >= 165) {
+c.src = "Images/1.jpg";
+}
+
+if (a.currentTime >= 180) {
+c.src = "Images/2.jpg";
+
+}
+if (a.currentTime >= 195) {
+c.src = "Images/0.jpg";
+}
+
+if (a.currentTime >= 210) {
+c.src = "Images/1.jpg";
+}
+
+if (a.currentTime >= 225) {
+c.src = "Images/2.jpg";
+}
+}
 
 </script>
 
