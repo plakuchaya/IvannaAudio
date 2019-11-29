@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Audio </title>
+</head>
+<body style="background-color: lightgrey">
+
+<audio controls id="changeAudio" autoplay style ="margin-left: 550px; margin-top:60px;">
+
+<source src="audio/Sonny.mp3" type="">
+
+</audio>
+
+<img class="slides" src="Images/0.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
+<img class="slides" src="Images/1.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
+<img class="slides" src="Images/2.jpg" style="width:50%; margin-left: 350px; margin-top: 70px;">
+
+<div>
+<button style="margin-left:550px; margin-top: 100px; background-color: grey; width: 300px; height: 50px; border-radius: 30px; font-size: 20px; font-family: Helvetica; color: white;" class = "button" onclick="changeAudio()">Change Song
+</button>
+</div>
+
+<script type="text/javascript">
+	
+var a = document.getElementById("changeAudio");
+var b = document.getElementById ("changeImage");
+var checkThis;
+var prevTime = 0;
+var i = 0;
+
+var state = false;
+
+function changeAudio() {
+
+state = !state;
+
+if (state == false) {
+
+a.src = "audio/Sonny.mp3"; 
+}
+
+else if (state == true) {
+a.src = "audio/Cher.mp3";
+}
+
+}
+
+
+var index = 0;
+change();
+function change() {
+var x = document.getElementsByClassName("slides");
+for(var i = 0; i < x.length; i++) { 
+x[i].style.display = "none"; 
+}
+index++;
+if(index > x.length) { 
+index = 1; 
+}
+x[index - 1].style.display = "block";
+setTimeout(change, 3500);
+}
+
+
+</script>
+
+</body>
+</html>
